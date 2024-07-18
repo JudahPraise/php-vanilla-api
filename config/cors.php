@@ -2,6 +2,6 @@
 return [
     'cors' => [
         'origins' => ['*'],
-        'methods' => ['GET, POST, PUT, DELETE'],
+        'methods' => ['GET', 'POST', 'PUT', 'DELETE'],
     ],
 ];

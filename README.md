@@ -49,3 +49,19 @@ Access the API at `http://localhost:8000`.
 - **public:** Publicly accessible files (entry point)
 - **routes:** Route definitions
 - **src:** Source code
+
+## Authentication
+
+# Commands Directory and Secret Key Generator
+
+This guide explains how to run a command script that generates a random secret key and updates the `.env` file with this key.
+
+## Steps
+
+1. **Generate JWT_SECRET:**
+
+   After running the command the token will automatically added on your `.env`. Make sure JWT_SECRET is present inside your `.env`;
+
+   ```sh
+   php commands/generate_secret.php
+   ```

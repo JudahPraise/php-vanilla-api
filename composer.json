@@ -1,0 +1,17 @@
+{
+  "name": "judahdeocampo/php-vanilla",
+  "require": {
+    "vlucas/phpdotenv": "^5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Judah Praise",
+      "email": "64674661+JudahPraise@users.noreply.github.com"
+    }
+  ]
+}

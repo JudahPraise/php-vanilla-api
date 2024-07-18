@@ -25,7 +25,7 @@ class UserService
 
     public function getUserById($id)
     {
-        return $this->model->getUserById($id);
+        return $this->model->findUserById($id);
     }
 
     public function updateUser($id, $payload)

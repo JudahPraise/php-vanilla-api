@@ -10,4 +10,6 @@ $router->addRoute('GET', '/users/{id}', 'App\\Controllers\\UserController@getUse
 $router->addRoute('PUT', '/users/{id}', 'App\\Controllers\\UserController@updateUser');
 $router->addRoute('DELETE', '/users/{id}', 'App\\Controllers\\UserController@deleteUserById');
 
+$router->addRoute('POST', '/login', 'App\\Controllers\\AuthController@login');
+
 return $router;

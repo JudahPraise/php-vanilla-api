@@ -32,7 +32,6 @@ class UserController
             echo json_encode(['error' => 'Invalid JSON format']);
             return;
         }
-
         $this->userService->createUser($requestData);
     }
 

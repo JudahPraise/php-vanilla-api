@@ -30,10 +30,12 @@ class AuthController
         if ($user && password_verify($requestData['password'], $user['password'])) {
             $jwtUtility = new JWTUtility();
             $token = $jwtUtility->generateToken(['username' => $user['username']]);
-            echo json_encode(['token' => $token]);
+
+            echo $token;
         } else {
             http_response_code(401); // Unauthorized
             echo json_encode(['error' => 'Invalid credentials']);
         }
+
     }
 }

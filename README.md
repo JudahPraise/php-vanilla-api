@@ -52,7 +52,7 @@ Access the API at `http://localhost:8000`.
 
 ## Authentication
 
-# Commands Directory and Secret Key Generator
+### Commands Directory and Secret Key Generator
 
 This guide explains how to run a command script that generates a random secret key and updates the `.env` file with this key.
 

@@ -12,7 +12,7 @@ return [
     'auth_token' => [
         'send_to_cookie' => true,
         'expires' => '60',
-        'secure' => true,
+        'secure' => false,
         'httponly' => true,
         'samesite' => 'Strict',
     ],

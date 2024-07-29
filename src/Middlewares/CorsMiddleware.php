@@ -11,19 +11,16 @@ class CorsMiddleware implements MiddlewareInterface
         $config = require_once __DIR__ . '/../../config/cors.php';
         $corsConfig = $config['cors'];
 
-        header("Access-Control-Allow-Origin: " . implode(', ', $corsConfig['origins']));
+        header("Access-Control-Allow-Origin: http://localhost:5173");
         header("Content-Type: application/json; charset=UTF-8");
-        header("Access-Control-Allow-Methods: " . implode(', ', $corsConfig['methods']));
+        header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE, PUT");
+        header("Access-Control-Allow-Headers: X-API-KEY, Origin, Accept, Access-Control-Request-Method, Access-Control-Request-Headers, Content-Type, Authorization, X-Requested-With");
+        header("Access-Control-Allow-Credentials: true");
         header("Access-Control-Max-Age: 3600");
-        header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-        $allowedMethods = $corsConfig['methods'];
-        $requestMethod = $_SERVER['REQUEST_METHOD'];
-
-        if (!in_array($requestMethod, $allowedMethods)) {
-            http_response_code(405); // Method Not Allowed
-            echo json_encode(['error' => 'Method not allowed']);
-            return;
+        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+            http_response_code(204);
+            exit;
         }
 
         // Call the next middleware or main application logic

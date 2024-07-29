@@ -30,12 +30,48 @@ class AuthController
         if ($user && password_verify($requestData['password'], $user['password'])) {
             $jwtUtility = new JWTUtility();
             $token = $jwtUtility->generateToken(['username' => $user['username']]);
-
-            echo $token;
         } else {
             http_response_code(401); // Unauthorized
             echo json_encode(['error' => 'Invalid credentials']);
         }
+
+    }
+
+    public function validate()
+    {
+        $jwtUtility = new JWTUtility();
+
+        // Retrieve the token from the cookie
+        $token = $_COOKIE['auth_token'] ?? null;
+
+        // Validate the token and return response
+        if (isset($token)) {
+            if ($token && $payload = $jwtUtility->validateToken($token)) {
+                http_response_code(200);
+            } else {
+                http_response_code(401); // Unauthorized
+                echo json_encode(['error' => 'Invalid token']);
+            }
+        } else {
+            http_response_code(201);
+        }
+
+    }
+
+    public function logout()
+    {
+
+        $expirationTime = time() + (2 * 60);
+        setcookie("auth_token", "", [
+            'expires' => $expirationTime, // Convert minutes to seconds
+            'path' => '/',
+            'secure' => true,
+            'httponly' => true,
+            'samesite' => 'None',
+        ]);
+
+        http_response_code(200);
+        echo json_encode(['message' => 'Logged out successfully!']);
 
     }
 }

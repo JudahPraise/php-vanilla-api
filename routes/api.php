@@ -11,5 +11,7 @@ $router->addRoute('PUT', '/users/{id}', 'App\\Controllers\\UserController@update
 $router->addRoute('DELETE', '/users/{id}', 'App\\Controllers\\UserController@deleteUserById');
 
 $router->addRoute('POST', '/login', 'App\\Controllers\\AuthController@login');
+$router->addRoute('POST', '/validate-token', 'App\\Controllers\\AuthController@validate');
+$router->addRoute('POST', '/logout', 'App\\Controllers\\AuthController@logout');
 
 return $router;

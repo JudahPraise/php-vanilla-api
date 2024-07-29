@@ -22,7 +22,8 @@ class JWTUtility
     public function generateToken($payload)
     {
         $issuedAt = time();
-        $expirationTime = $issuedAt + ($this->authTokenConfig['expires'] * 60); // jwt valid for 1 hour
+        // $expirationTime = $issuedAt + ($this->authTokenConfig['expires'] * 60); // jwt valid for 1 hour
+        $expirationTime = time() + (2 * 60);
         $payload['iat'] = $issuedAt;
         $payload['exp'] = $expirationTime;
 
@@ -33,10 +34,9 @@ class JWTUtility
             setcookie("auth_token", $token, [
                 'expires' => $expirationTime, // Convert minutes to seconds
                 'path' => '/',
-                'domain' => '', // Set your domain if needed
-                'secure' => $this->authTokenConfig['secure'],
-                'httponly' => $this->authTokenConfig['httponly'],
-                'samesite' => $this->authTokenConfig['samesite'],
+                'secure' => true,
+                'httponly' => true,
+                'samesite' => 'None',
             ]);
 
             return json_encode(['message' => 'Login successful']);

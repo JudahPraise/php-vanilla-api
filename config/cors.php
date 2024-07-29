@@ -1,7 +1,7 @@
 <?php
 return [
     'cors' => [
-        'origins' => ['*'],
-        'methods' => ['GET', 'POST', 'PUT', 'DELETE'],
+        'origins' => ['http://localhost:5173'],
+        'methods' => ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     ],
 ];
